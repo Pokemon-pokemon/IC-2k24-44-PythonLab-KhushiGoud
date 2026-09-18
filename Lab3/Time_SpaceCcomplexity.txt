@@ -1,0 +1,294 @@
+Activity: Find the Time and Space Complexity
+For each snippet, write the time complexity and space complexity using Big-O notation, and justify your answer in one line.
+
+
+Snippet 1
+def find_max(arr):
+    max_val = arr[0]
+    for i in range(1, len(arr)):
+        if arr[i] > max_val:
+            max_val = arr[i]
+    return max_val
+
+Time complexity: O(n)
+Space complexity: O(1)
+Justify: The loop checks each element of the array once.
+
+
+Snippet 2
+def has_duplicate(arr):
+    for i in range(len(arr)):
+        for j in range(i + 1, len(arr)):
+            if arr[i] == arr[j]:
+                return True
+    return False
+
+Time complexity: O(n²)
+Space complexity: O(1)
+Justify: Two nested loops compare pairs of elements.
+
+
+Snippet 3
+def sum_digits(n):
+    if n == 0:
+        return 0
+    return n % 10 + sum_digits(n // 10)
+
+Time complexity: O(log n)
+Space complexity: O(log n)
+Justify: The number is divided by 10 in every recursive call.
+
+
+Snippet 4
+def print_pairs(arr):
+    n = len(arr)
+    result = []
+    for i in range(n):
+        for j in range(n):
+            result.append((arr[i], arr[j]))
+    return result
+
+Time complexity: O(n²)
+Space complexity: O(n²)
+Justify: Two nested loops generate n² pairs and store them in the result list.
+
+
+Snippet 5
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+Time complexity: O(log n)
+Space complexity: O(1)
+Justify: The search range is divided into half after every iteration.
+
+
+Snippet 6
+def matrix_multiply(a, b):
+    n = len(a)
+    result = [[0] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                result[i][j] += a[i][k] * b[k][j]
+    return result
+
+Time complexity: O(n³)
+Space complexity: O(n²)
+Justify: Three nested loops run n times each, while the result matrix stores n² elements.
+
+
+Snippet 7
+def to_sparse(matrix):
+    triples = []
+    for r in range(len(matrix)):
+        for c in range(len(matrix[0])):
+            if matrix[r][c] != 0:
+                triples.append((r, c, matrix[r][c]))
+    return triples
+
+Time complexity (in terms of matrix dimensions m and n): O(mn)
+Space complexity (in terms of k non-zero elements): O(k)
+Justify: Every matrix element is checked, but only k non-zero elements are stored.
+
+
+Snippet 8
+def process(arr):
+    n = len(arr)
+    for i in range(n):
+        print(arr[i])
+        for j in range(n):
+            for k in range(n):
+                print(arr[j], arr[k])
+
+Time complexity: O(n³)
+Justify: The outer loop runs n times and the two inner loops run n² times for each outer iteration.
+
+
+Snippet 9
+def check_first_ten(arr):
+    for i in range(len(arr)):
+        for j in range(10):
+            if arr[i] == j:
+                return True
+    return False
+
+Time complexity: O(n)
+Justify: The inner loop always runs only 10 times, which is a constant, so the overall complexity is O(n).
+
+
+Snippet 10
+def reverse_new(arr):
+    reversed_arr = []
+    for i in range(len(arr) - 1, -1, -1):
+        reversed_arr.append(arr[i])
+    return reversed_arr
+
+Time complexity: O(n)
+Space complexity: O(n)
+Justify: Every element is copied into a new list.
+
+
+Snippet 11
+def reverse_in_place(arr):
+    left, right = 0, len(arr) - 1
+    while left < right:
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
+    return arr
+
+Time complexity: O(n)
+Space complexity: O(1)
+Justify: The array is reversed using swaps without creating another array.
+
+
+Snippet 12
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+Time complexity: O(n)
+Space complexity: O(n)
+Justify: There are n recursive calls and the recursion stack uses O(n) space.
+
+
+Snippet 13
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+Time complexity: O(2ⁿ)
+Space complexity: O(n)
+Justify: Each call creates two recursive calls, producing an exponential number of calls.
+
+
+Snippet 14
+def count_pairs_with_sum(arr, target):
+    seen = set()
+    count = 0
+    for num in arr:
+        if target - num in seen:
+            count += 1
+        seen.add(num)
+    return count
+
+Time complexity: O(n)
+Space complexity: O(n)
+Justify: The array is scanned once and the set can store up to n elements.
+
+
+Snippet 15
+def print_all_subsets(arr):
+    n = len(arr)
+    for i in range(2 ** n):
+        subset = []
+        for j in range(n):
+            if i & (1 << j):
+                subset.append(arr[j])
+        print(subset)
+
+Time complexity: O(n · 2ⁿ)
+Justify: There are 2ⁿ subsets and up to n elements are checked for each subset.
+
+
+Snippet 16
+def merge_sorted(a, b):
+    result = []
+    i = j = 0
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            result.append(a[i])
+            i += 1
+        else:
+            result.append(b[j])
+            j += 1
+    result.extend(a[i:])
+    result.extend(b[j:])
+    return result
+
+Time complexity: O(n + m)
+Space complexity: O(n + m)
+Justify: Each element of both input lists is processed once and stored in the result.
+
+
+Snippet 17
+def is_palindrome(s):
+    return s == s[::-1]
+
+Time complexity: O(n)
+Space complexity: O(n)
+Justify: Reversing the string creates a new copy containing n characters.
+
+
+Snippet 18
+def flatten(matrix):
+    flat = []
+    for row in matrix:
+        for val in row:
+            flat.append(val)
+    return flat
+
+Time complexity (in terms of m rows and n columns): O(mn)
+Space complexity: O(mn)
+Justify: All m × n elements are visited and stored in the new list.
+
+
+Snippet 19
+def power(base, exp):
+    if exp == 0:
+        return 1
+    return base * power(base, exp - 1)
+
+Time complexity: O(exp)
+Space complexity: O(exp)
+Justify: The exponent decreases by 1 in every recursive call.
+
+
+Snippet 20
+def fast_power(base, exp):
+    if exp == 0:
+        return 1
+    half = fast_power(base, exp // 2)
+    if exp % 2 == 0:
+        return half * half
+    return half * half * base
+
+Time complexity: O(log exp)
+Space complexity: O(log exp)
+Justify: The exponent is divided by 2 in every recursive call.
+
+
+Snippet 21
+def has_common_element(a, b):
+    for x in a:
+        for y in b:
+            if x == y:
+                return True
+    return False
+
+Time complexity (in terms of the sizes of a and b): O(nm)
+Space complexity: O(1)
+Justify: Every element of a can be compared with every element of b.
+
+
+Snippet 22
+def build_frequency_map(arr):
+    freq = {}
+    for val in arr:
+        freq[val] = freq.get(val, 0) + 1
+    return freq
+
+Time complexity: O(n)
+Space complexity: O(n)
+Justify: The array is scanned once and the frequency dictionary can store up to n distinct elements.
