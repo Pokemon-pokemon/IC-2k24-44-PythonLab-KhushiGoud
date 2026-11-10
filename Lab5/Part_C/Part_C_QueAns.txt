@@ -1,0 +1,124 @@
+PART C: SHORT REASONING QUESTIONS WITH ANSWERS Python Dictionaries
+
+Q1. Why does d2 = d not create a copy of a dictionary? Explain the
+difference between assignment, shallow copy, and deep copy. Which one
+should be used when copying a student database containing nested
+dictionaries?
+
+Answer: d2 = d does not create a new dictionary. It makes d2 refer to
+the same dictionary as d. Therefore, changing the dictionary through
+either variable affects the same object.
+
+A shallow copy creates a new outer dictionary, but nested objects are
+still shared. Example: d2 = d.copy()
+
+A deep copy creates a new dictionary and copies nested objects too.
+Example: import copy d2 = copy.deepcopy(d)
+
+For a student database containing nested dictionaries such as marks,
+copy.deepcopy() is best when the copy must be fully independent.
+
+
+Q2. Why must dictionary keys be hashable? Which of the following can be
+used as dictionary keys: [1, 2], (1, 2), {1, 2}, and "12"?
+
+Answer: Dictionary keys must be hashable so Python can calculate a
+stable hash value and find the key efficiently.
+
+-   [1, 2]: Cannot be used because a list is mutable.
+-   (1, 2): Can be used because this tuple contains hashable values.
+-   {1, 2}: Cannot be used because a set is mutable and unhashable.
+-   "12": Can be used because strings are hashable.
+
+Note: A tuple is hashable only if all its elements are hashable.
+
+
+Q3. What is the difference between accessing a dictionary value using
+d[key] and d.get(key)? Give examples of when each should be used.
+
+Answer: d[key] returns the value for the key, but raises a KeyError if
+the key is missing. d.get(key) returns None when the key is missing.
+d.get(key, default) returns the specified default value instead.
+
+Examples: students[101][“name”] frequency[word] = frequency.get(word,
+0) + 1 contacts.get(“Anita”, {}).get(“city”, “Unknown”)
+
+Use square-bracket access when the key is expected to exist. Use .get()
+when a missing key is possible and should be handled with a default
+value.
+
+
+Q4. What is the difference between using dict.update() and assigning a
+value with d[key] = value? When is update() more suitable?
+
+Answer: d[key] = value adds a single key-value pair or replaces the
+value of one existing key. d.update() can add or replace multiple
+key-value pairs in one operation.
+
+Example: employee[“salary”] = 45000 employee.update({“dept”: “IT”,
+“salary”: 45000})
+
+update() is more suitable when several fields need to be added or
+changed together.
+
+
+Q5. How can a dictionary comprehension create a new dictionary
+containing employees whose salary is below 50,000 after giving them a
+10% raise, without modifying the original dictionary?
+
+Answer: A dictionary comprehension can filter the employees and create a
+new dictionary. Using {**emp, ...} also creates a new nested employee
+dictionary, so the original employee records remain unchanged.
+
+Example: raised = { emp_id: {**emp, “salary”: emp[“salary”] * 1.10} for
+emp_id, emp in employees.items() if emp[“salary”] < 50000 }
+
+Use this approach when a separate result is required and the original
+data must be preserved. Modify the original dictionary directly only
+when permanent changes are intended.
+
+
+Q6. Why can deleting dictionary keys while iterating over the same
+dictionary cause an error? Show a safe way to delete entries whose
+values are below 40.
+
+Answer: Deleting keys changes the dictionary’s size while the loop is
+iterating over it. This can cause a RuntimeError.
+
+One safe method is to iterate over a list of the keys: for key in
+list(d.keys()): if d[key] < 40: del d[key]
+
+Another safe method is to build a new dictionary: d = {key: value for
+key, value in d.items() if value >= 40}
+
+
+Q7. How can a dictionary that stores books and the member IDs who
+borrowed them be inverted into a dictionary that stores each member ID
+and the books borrowed by that member? Why should the values be lists?
+
+Answer: Create a new dictionary and loop through each book and its
+issued_to list. For each member, add the book title to that member’s
+list.
+
+Example: member_books = {} for isbn, book in books.items(): for member
+in book[“issued_to”]: member_books.setdefault(member,
+[]).append(book[“title”])
+
+The values should be lists because one member may borrow multiple books.
+
+
+Q8. What is the average time complexity of dictionary lookup compared
+with searching for an item in a list? When is it useful to build a
+reverse phone directory dictionary?
+
+Answer: Dictionary lookup takes O(1) average time, while searching a
+list takes O(n) time because the list may need to be checked item by
+item.
+
+A reverse phone directory maps each phone number to a contact name:
+reverse = { phone: name for name, data in contacts.items() for phone in
+data[“phones”] }
+
+Building the reverse dictionary takes time proportional to the number of
+phone numbers, but it is useful when many phone-number lookups will be
+performed. For just one lookup, scanning the contacts may be simpler.
