@@ -1,128 +1,56 @@
-# Python Lab 1
+# Python Lab Assignments
 
-## 1. Variable and Identifier Practice
+**Student Name:** Khushi Goud  
+**Roll Number:** IC-2K24-44
 
-### Aim
-To declare variables and display their values along with their data types.
+## About
+This repository contains Python lab assignments completed as part of the Python Practical Course.
 
-### Logic
-Declare variables for name, age, height and student status.
-Use the type() function to display the data type of each variable.
+## Lab 1 – Python Basics
+Basic Python programs covering:
+- Variables
+- Arithmetic Operations
+- Strings
+- Escape Sequences
 
-### Sample Input / Output
-No input is required.
+## Lab 2 – Pattern Printing
+Python programs for printing different patterns.
 
-Output:
-Name: Khushi
-Type: <class 'str'>
-Age: 20
-Type: <class 'int'>
-Height: 5.2
-Type: <class 'float'>
-Student: True
-Type: <class 'bool'>
+## Lab 3 – Time and Space Complexity
+Programs and exercises related to time and space complexity.
 
+## Lab 4 – Algorithm Optimization and Time Complexity
+This lab focuses on improving program efficiency using optimized algorithms.
 
-## 2. Greeting Program
+**Problems Implemented:**
+1. Sum of All Primes Below N
+2. Count Pairs With Given Sum
+3. K-th Smallest Pairwise Sum
+4. 
+**Approaches Covered:**
+- Naive Approach
+- Square Root Optimization
+- Sieve of Eratosthenes
+- Dictionary-based Optimization
+- Sorting, Binary Search and Two Pointers
 
-### Aim
-To take the user's name, age and city as input and display a greeting sentence.
+## Lab 5 – Python Dictionaries
 
-### Logic
-Take name, age and city from the user using input().
-Use an f-string to combine all three values into one sentence.
+**Part A – Practical Programs**
+- Student Database
+- Employee Database
+- Library Record System
+- Word Frequency Counter
+- Phone Directory
 
-### Sample Input / Output
+**Part B – Predict the Output**
+- Dictionary-based output prediction questions.
 
-Input:
-Khushi
-20
-Indore
+**Part C – Questions and Answers**
+- Conceptual and reasoning-based questions about Python dictionaries.
 
-Output:
-My name is Khushi, I am 20 years old and I live in Indore.
+## Technologies Used
+- Python 3
+- Visual Studio Code
+- Git and GitHub
 
-
-## 3. Arithmetic Operations
-
-### Aim
-To perform basic arithmetic operations on two numbers.
-
-### Logic
-Take two numbers as input.
-Calculate and display their sum, difference, product, quotient and remainder.
-
-### Sample Input / Output
-
-Input:
-20
-6
-
-Output:
-Sum: 26.0
-Difference: 14.0
-Product: 120.0
-Quotient: 3.3333333333333335
-Remainder: 2.0
-
-
-## 4. Celsius to Fahrenheit
-
-### Aim
-To convert temperature from Celsius to Fahrenheit.
-
-### Logic
-Take Celsius temperature as input.
-Apply the formula F = (C * 9/5) + 32 and display the Fahrenheit value.
-
-### Sample Input / Output
-
-Input:
-25
-
-Output:
-Temperature in Fahrenheit: 77.0
-
-
-## 5. String Manipulation
-
-### Aim
-To perform different operations on a full name.
-
-### Logic
-Take a full name as input.
-Use string methods to display the name in uppercase, lowercase, reversed form and its length.
-
-### Sample Input / Output
-
-Input:
-Khushi Goud
-
-Output:
-Uppercase: KHUSHI GOUD
-Lowercase: khushi goud
-Reversed: duoG ihsuhK
-Length: 11
-
-
-## 6. Escape Sequence Practice
-
-### Aim
-To display a receipt using tab and newline escape sequences.
-
-### Logic
-Use \t to create spacing between item names and prices.
-Use separate print statements to display the receipt on different lines.
-
-### Sample Input / Output
-
-No input is required.
-
-Output:
------ RECEIPT -----
-Item            Price
-Pen             20
-Notebook        50
-Pencil          10
--------------------
-Total           80
